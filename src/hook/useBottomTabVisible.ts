@@ -8,8 +8,8 @@ const useBottomTabVisible = () => {
   const [_, setBottomTabVisibleState] = useRecoilState(BottomTabVisibleState)
   
   useEffect(() => {
-    if(focused) setBottomTabVisibleState(false);
-    else setBottomTabVisibleState(true);
+    if(focused) setBottomTabVisibleState('flex');
+    else setBottomTabVisibleState('none');
   },[focused])
 }
 

@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 import { AtomKey } from "../constant";
 
-export default atom<boolean>({
+export default atom<'flex'|'none'>({
   key: AtomKey.BottomTabVisible,
-  default: false,
+  default: 'none',
 })
