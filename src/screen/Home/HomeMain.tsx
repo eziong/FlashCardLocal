@@ -1,14 +1,13 @@
 import CircleBtn from '@src/component/atom/CircleBtn';
 import T_Basic from '@src/component/template/T_Basic';
 import useBottomTabVisible from '@src/hook/useBottomTabVisible';
-import useTypeNavigation from '@src/hook/useTypeNavigation';
-import { StackNavigationName } from '@src/navigation/constant';
+import useTypeStackNavigation from '@src/hook/useTypeStackNavigation';
 import React from 'react';
 
 const HomeMain = () => {
   useBottomTabVisible();
-  const navigation = useTypeNavigation(StackNavigationName.HomeStack);
-  
+  const navigation = useTypeStackNavigation();
+
   return(
     <T_Basic 
       Body={
