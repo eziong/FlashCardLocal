@@ -5,7 +5,7 @@ import useTypeTabNavigation from './useTypeTabNavigation';
 const useBottomTabVisible = () => {
   const focused = useIsFocused();
   const navigation = useTypeTabNavigation();
-
+  
   useEffect(() => {
     if(focused) navigation?.setOptions({tabBarStyle:{display:'flex'}});
     else navigation?.setOptions({tabBarStyle:{display:'none'}});

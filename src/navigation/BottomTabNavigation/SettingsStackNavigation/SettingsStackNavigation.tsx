@@ -1,5 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import SettingsMain from '@src/screen/Settings/SettingsMain';
+import SettingsMainScreen from '@src/screen/Settings/SettingsMainScreen';
 import Test from '@src/screen/Settings/Test';
 import React from 'react';
 
@@ -7,8 +7,13 @@ const Stack = createStackNavigator();
 
 const SettingsStackNavigation = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name='SettingsMainScreen' component={SettingsMain} />
+    <Stack.Navigator
+      initialRouteName='SettingsMainScreen'
+      screenOptions={{
+        headerShown: false
+    }}
+    >
+      <Stack.Screen name='SettingsMainScreen' component={SettingsMainScreen} />
       <Stack.Screen name='test' component={Test} />
     </Stack.Navigator>
   )

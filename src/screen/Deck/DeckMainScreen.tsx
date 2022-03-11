@@ -1,17 +1,17 @@
+import DeckCollection from '@src/component/organism/DeckCollection';
 import T_Basic from '@src/component/template/T_Basic';
 import useBottomTabVisible from '@src/hook/useBottomTabVisible';
 import React from 'react';
-import { View } from 'react-native';
 
-const SettingsMain = () => {
+const DeckMainScreen = () => {
   useBottomTabVisible();
-  return(
+  return (
     <T_Basic 
-      Body={(
-        <View></View>
-      )}
+      Body={
+        <DeckCollection />
+      }
     />
   )
 }
 
-export default SettingsMain
+export default DeckMainScreen;

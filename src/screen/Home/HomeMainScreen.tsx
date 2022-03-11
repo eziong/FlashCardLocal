@@ -4,7 +4,7 @@ import useBottomTabVisible from '@src/hook/useBottomTabVisible';
 import useTypeStackNavigation from '@src/hook/useTypeStackNavigation';
 import React from 'react';
 
-const HomeMain = () => {
+const HomeMainScreen = () => {
   useBottomTabVisible();
   const navigation = useTypeStackNavigation();
 
@@ -13,11 +13,11 @@ const HomeMain = () => {
       Body={
         <CircleBtn 
           content='Learn'
-          onPress={() => navigation.navigate('test')}
+          onPress={() => navigation.navigate('DeckSelectionScreen')}
         />
       }
     />
   )
 }
 
-export default HomeMain;
+export default HomeMainScreen;

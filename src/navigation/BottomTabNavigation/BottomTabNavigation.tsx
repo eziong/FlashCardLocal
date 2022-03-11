@@ -19,8 +19,8 @@ const BottomTabNavigation = () => {
     >
       {/* add stack navigators for bottom tab navigation as screen */}
       <Tab.Screen name="HomeStack" component={HomeStackNavigation} />
-      <Tab.Screen name="Deck" component={DeckStackNavigation} />
-      <Tab.Screen name="Settings" component={SettingsStackNavigation} />
+      <Tab.Screen name="DeckStack" component={DeckStackNavigation} />
+      <Tab.Screen name="SettingsStack" component={SettingsStackNavigation} />
     </Tab.Navigator>
   )
 }

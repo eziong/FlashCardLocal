@@ -3,9 +3,9 @@ import useBottomTabVisible from '@src/hook/useBottomTabVisible';
 import React from 'react';
 import { View } from 'react-native';
 
-const DeckMain = () => {
+const SettingsMainScreen = () => {
   useBottomTabVisible();
-  return (
+  return(
     <T_Basic 
       Body={(
         <View></View>
@@ -14,4 +14,4 @@ const DeckMain = () => {
   )
 }
 
-export default DeckMain;
+export default SettingsMainScreen
