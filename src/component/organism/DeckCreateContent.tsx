@@ -1,49 +1,34 @@
 import useTypeStackNavigation from '@src/hook/useTypeStackNavigation';
-import newDeckState, { deckAtomGenerator } from '@src/store/state/newDeckState';
-import { AsyncType, Card } from '@src/type';
-import { addDBTableIndexKeys, saveAsyncStorage } from '@src/utils';
+import { createDeck } from '@src/utils/deck';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { useRecoilState } from 'recoil';
+import { TextInput } from 'react-native-gesture-handler';
 import SquareBtn from '../atom/SquareBtn';
-import AddCardBtn from '../molecule/AddCardBtn';
 
-const DeckCreateFooter = () => {
-  const [newDeck, setNewDeck] = useRecoilState(newDeckState);
+const DeckCreateContent = () => {
+  const [deckName, setDeckName] = useState<string>('');
   const [disabled, setDisabled] = useState<boolean>(false);
   const navigation = useTypeStackNavigation();
-  
-  const onCreateNewCard = (card:Card) => {
-    if(disabled) return;
-    setNewDeck((prev) => ({...prev, cards:[...prev.cards, card]}))
-  }
 
   const onPressSave = () => {
     if(disabled) return;
-    if(newDeck.name.length > 0){
+    if(deckName.length > 0){
       setDisabled(true);
-      saveAsyncStorage(newDeck.id, newDeck)
-      .then(async (success) => {
-        if(success){
-          setNewDeck(deckAtomGenerator());
-          await addDBTableIndexKeys(AsyncType.DECK, newDeck.id);
-          navigation.pop();
-        }else{
-          setDisabled(false);
-          console.log('save failed')
-        }
-      })
+      createDeck(deckName)
+      .then(() => setDisabled(false))
+      .finally(() => navigation.pop())
     }
   }
 
   const onPressCancle = () => {
     if(disabled) return;
+    setDeckName('');
     navigation.pop();
   }
 
   return (
     <View style={styles.Container} >
-      <AddCardBtn onCreateNewCard={onCreateNewCard} />
+      <TextInput placeholder='name' onChangeText={setDeckName} />
       <View style={styles.DoubleBtnContainer} >
         <SquareBtn 
           content='Save' 
@@ -60,7 +45,7 @@ const DeckCreateFooter = () => {
   )
 }
 
-export default DeckCreateFooter;
+export default DeckCreateContent;
 
 const styles = StyleSheet.create({
   Container: {

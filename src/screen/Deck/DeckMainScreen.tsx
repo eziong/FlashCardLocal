@@ -1,6 +1,7 @@
 import DeckCollection from '@src/component/organism/DeckCollection';
 import T_Basic from '@src/component/template/T_Basic';
 import useBottomTabVisible from '@src/hook/useBottomTabVisible';
+import { bottomTabHeight } from '@src/navigation/constant';
 import React from 'react';
 
 const DeckMainScreen = () => {
@@ -10,6 +11,7 @@ const DeckMainScreen = () => {
       Body={
         <DeckCollection />
       }
+      bottomTabBarHeight={bottomTabHeight}
     />
   )
 }

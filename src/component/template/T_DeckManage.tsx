@@ -1,6 +1,6 @@
+import { fullScreen } from '@src/navigation/constant';
 import React, { Fragment, ReactElement } from 'react';
-import { StyleSheet, View, FlatList, Text, Dimensions } from 'react-native';
-import { KeyboardAwareFlatList } from 'react-native-keyboard-aware-scroll-view';
+import { StyleSheet, View, FlatList } from 'react-native';
 import CreateDeckBtn from '../molecule/CreateDeckBtn';
 
 const T_DeckManage = ({
@@ -8,35 +8,33 @@ const T_DeckManage = ({
 }:{
   elements: ReactElement[]
 }) => (
-  <KeyboardAwareFlatList 
-    style={styles.Container}
-    ListHeaderComponent={(<View></View>)}
-    ListFooterComponent={(
-    <View style={styles.ButtonContainer} >
+  <View style={styles.Container} >
+    <View style={styles.FlatlistContainer} >
+      <FlatList
+        data={elements}
+        renderItem={({item, index}) => (
+          <Fragment key={index} >
+            {item}
+          </Fragment>
+        )}
+      />
+    </View>
+    <View style={styles.ButtonContainer}>
       <CreateDeckBtn />
     </View>
-    )}
-    data={elements}
-    renderItem={({item, index}) => (
-      <Fragment key={index} >
-        {item}
-      </Fragment>
-    )}
-  />
+  </View>
 )
 
 export default T_DeckManage;
 
 const styles = StyleSheet.create({
-  Container: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
-    padding: 50,
+  Container:{
+    
   },
-  FlatListContainer: {
-    flex: 6
+  FlatlistContainer: {
+    flex:1
   },
   ButtonContainer: {
-    flex: 1
+    width: fullScreen()[1],
   }
 })

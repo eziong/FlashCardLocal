@@ -7,15 +7,14 @@ import SettingsStackNavigation from './SettingsStackNavigation';
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigation = () => {
-  
+
   return (
     <Tab.Navigator
       initialRouteName='HomeStack'
-      screenOptions={{
+      screenOptions={({route}) => ({
         headerShown: false,
-        tabBarHideOnKeyboard: true,
-        tabBarStyle: {display: 'none'}
-      }}
+        tabBarHideOnKeyboard: true
+      })}
     >
       {/* add stack navigators for bottom tab navigation as screen */}
       <Tab.Screen name="HomeStack" component={HomeStackNavigation} />

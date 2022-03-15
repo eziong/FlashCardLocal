@@ -1,3 +1,3 @@
 export enum AtomKey {
-  NEWDECK = "NewDeck"
+  NEWCARDS = "NewCards"
 }

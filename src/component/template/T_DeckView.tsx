@@ -22,8 +22,6 @@ export default T_DeckView;
 
 const styles = StyleSheet.create({
   Container: {
-    width: 300,
-    height: 500,
-    borderWidth: 1,
+    height:"100%"
   }
 })

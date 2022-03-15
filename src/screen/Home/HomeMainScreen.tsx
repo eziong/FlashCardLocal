@@ -2,6 +2,7 @@ import CircleBtn from '@src/component/atom/CircleBtn';
 import T_Basic from '@src/component/template/T_Basic';
 import useBottomTabVisible from '@src/hook/useBottomTabVisible';
 import useTypeStackNavigation from '@src/hook/useTypeStackNavigation';
+import { bottomTabHeight } from '@src/navigation/constant';
 import React from 'react';
 
 const HomeMainScreen = () => {
@@ -16,6 +17,7 @@ const HomeMainScreen = () => {
           onPress={() => navigation.navigate('DeckSelectionScreen')}
         />
       }
+      bottomTabBarHeight={bottomTabHeight}
     />
   )
 }

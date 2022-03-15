@@ -1,12 +1,13 @@
+import { Card } from '@src/type';
 import React, { Fragment, useState } from 'react';
 import { Modal, StyleSheet, Text, View } from 'react-native';
 import SquareBtn from '../atom/SquareBtn';
-import AddCardModal from './AddCardModal';
+import CardEditModal from './CardEditModal';
 
-const AddCardBtn = ({
-  deckId,
+const CardEditBtn = ({
+  card,
 }:{
-  deckId:string
+  card:Card,
 }) => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
 
@@ -21,25 +22,29 @@ const AddCardBtn = ({
   return(
     <Fragment>
       <SquareBtn 
-        content="Add Card"
+        content="Edit"
         onPress={onOpenModal}
         ContainerStyle={styles.Container}
+        ContentStyle={styles.Content}
       />
-      <AddCardModal
-        deckId={deckId}
+      <CardEditModal 
         modalVisible={modalVisible}
         onCloseModal={onCloseModal}
+        card={card}
       />
     </Fragment>
   )
 }
 
-export default AddCardBtn;
+export default CardEditBtn;
 
 const styles =StyleSheet.create({
   Container: {
-    width: "100%",
-    height: 50
+    width: 50,
+    height: 30,
+  },
+  Content:{
+    fontSize: 15,
   },
   ModalContainer: {
     flex: 1,

@@ -1,12 +1,19 @@
+import { fullScreen } from '@src/navigation/constant';
 import React, { ReactElement } from 'react';
-import { Dimensions, StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 const T_Basic = ({
-  Body
+  Body,
+  bottomTabBarHeight,
 }:{
-  Body:ReactElement
+  Body:ReactElement,
+  bottomTabBarHeight?:number,
 }) => (
-  <View style={styles.Container} >
+  <View style={
+    bottomTabBarHeight
+    ? [styles.Container, {height: fullScreen()[0] - bottomTabBarHeight}]
+    : [styles.Container, {height: fullScreen()[0]}]
+  } >
     <View style={styles.Body} >
       {Body}
     </View>
@@ -17,8 +24,8 @@ export default T_Basic;
 
 const styles = StyleSheet.create({
   Container:{
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+    width: fullScreen()[1],
+    backgroundColor:'yellow'
   },
   Header:{
 
