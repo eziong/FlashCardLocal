@@ -1,31 +1,37 @@
+import CardItemContext from '@src/context/CardItemContext';
 import { AsyncType, Card } from '@src/type';
-import React, { useState } from 'react';
+import { updateCard } from '@src/utils/deck';
+import React, { useContext, useEffect, useState } from 'react';
 import { Modal, View, TextInput, StyleSheet } from 'react-native';
 import SquareBtn from '../atom/SquareBtn';
 
 const CardEditModal = ({
   modalVisible,
   onCloseModal,
-  card,
 }:{
   modalVisible:boolean,
   onCloseModal: () => void,
-  card: Card,
 }) => {
-  const [question, setQuestion] = useState<string>(card.content.question);
-  const [answer, setAnswer] = useState<string>(card.content.answer);
+  const {question, setQuestion, answer, setAnswer, deckId, id} = useContext(CardItemContext);
+  const [localQuestion, setLocalQuestion] = useState<string>(question);
+  const [localAnswer, setLocalAnswer] = useState<string>(answer);
+
+  useEffect(() => {
+    setLocalQuestion(question);
+    setLocalAnswer(answer);
+  },[question, answer])
 
   const onPressConfirm = () => {
     if(question.length === 0 || answer.length === 0) return;
-    // onEditCard({question, answer, id:generateDBTableName(AsyncType.CARD)});
-    setQuestion('');
-    setAnswer('');
+    updateCard(deckId, id, {question:localQuestion, answer:localAnswer})
+    setQuestion(localQuestion);
+    setAnswer(localAnswer);
     onCloseModal();
   }
 
   const onPressCancle = () => {
-    setQuestion('');
-    setAnswer('');
+    setLocalQuestion(question);
+    setLocalAnswer(answer);
     onCloseModal();
   }
 
@@ -37,8 +43,8 @@ const CardEditModal = ({
       >
         <View style={styles.ModalContainer} >
           <View style={styles.ModalContentContainer} >
-            <TextInput placeholder='Question' onChangeText={setQuestion} value={question} />
-            <TextInput placeholder='Answer' onChangeText={setAnswer} value={answer} />
+            <TextInput placeholder='Question' onChangeText={setLocalQuestion} value={localQuestion} />
+            <TextInput placeholder='Answer' onChangeText={setLocalAnswer} value={localAnswer} />
             <View style={styles.ModalBtnContainer} >
               <SquareBtn 
                 content='Confirm' 

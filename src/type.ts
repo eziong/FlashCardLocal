@@ -4,6 +4,12 @@ export enum TabBarFirstScreen {
   SettingsMainScreen = "SettingsMainScreen",
 }
 
+export type ParamLimit = {
+  DeckEditContent: {
+    deckId:string,
+  }
+}
+
 export enum AsyncType {
   DECK = "Deck",
   CARD = "Card",

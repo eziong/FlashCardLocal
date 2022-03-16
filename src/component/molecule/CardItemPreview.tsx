@@ -1,6 +1,6 @@
+import CardItemContext from '@src/context/CardItemContext';
 import useLoadAsyncStorage from '@src/hook/useLoadAsyncStorage';
 import { Card } from '@src/type';
-import { loadAsyncStorage } from '@src/utils/db';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import CardEditBtn from './CardEditBtn';
@@ -10,9 +10,19 @@ const CardItemPreview = ({
 }:{
   cardId:string,
 }) => {
-  const [card, isLoading] = useLoadAsyncStorage(cardId);
+  const [card, isLoading] = useLoadAsyncStorage<Card>(cardId);
+  const [question, setQuestion] = useState<string>('')
+  const [answer, setAnswer] = useState<string>('');
 
-  if(isLoading) {
+  useEffect(() => {
+    if(isLoading) return;
+    if(card) {
+      setQuestion(card.content.question);
+      setAnswer(card.content.answer);
+    }
+  },[isLoading])
+
+  if(!card || isLoading) {
     return (
       <View>
         <Text>loading...</Text>
@@ -21,13 +31,22 @@ const CardItemPreview = ({
   }
 
   return (
-    <View style={styles.Container} >
-      <Text>{card.question}</Text>
-      <View style={styles.ButtonsContainer}>
-        <Text>view</Text>
-        <CardEditBtn card={card}/>
+    <CardItemContext.Provider
+      value={{
+        id: card.id,
+        question, setQuestion,
+        answer, setAnswer,
+        deckId: card.deckId,
+      }}
+    >
+      <View style={styles.Container} >
+        <Text>{question}</Text>
+        <View style={styles.ButtonsContainer}>
+          <Text>view</Text>
+          <CardEditBtn/>
+        </View>
       </View>
-    </View>
+    </CardItemContext.Provider>
   )
 }
 

@@ -4,7 +4,7 @@ import { AsyncType } from '../type';
 
 export const generateKey = (asyncType:AsyncType, division?:string):string => {
   if(division){
-    return `${asyncType}:/${division}:/${uuid.v4()}`;
+    return `${asyncType}:/${uuid.v4()}$$${division}`;
   }
   return `${asyncType}:/${uuid.v4()}`;
 }

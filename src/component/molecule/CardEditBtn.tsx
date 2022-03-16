@@ -4,11 +4,7 @@ import { Modal, StyleSheet, Text, View } from 'react-native';
 import SquareBtn from '../atom/SquareBtn';
 import CardEditModal from './CardEditModal';
 
-const CardEditBtn = ({
-  card,
-}:{
-  card:Card,
-}) => {
+const CardEditBtn = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
 
   const onOpenModal = () => {
@@ -30,7 +26,6 @@ const CardEditBtn = ({
       <CardEditModal 
         modalVisible={modalVisible}
         onCloseModal={onCloseModal}
-        card={card}
       />
     </Fragment>
   )

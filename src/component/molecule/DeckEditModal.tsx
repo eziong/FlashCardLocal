@@ -8,12 +8,10 @@ const DeckEditModal = ({
   modalVisible,
   onCloseModal,
   deck,
-  onReload,
 }:{
   modalVisible:boolean,
   onCloseModal: () => void,
   deck: Deck,
-  onReload: () => void,
 }) => {
   const [name, setName] = useState<string>(deck.name);
 
@@ -21,7 +19,6 @@ const DeckEditModal = ({
     if(name.length === 0) return;
     updateDeck(deck.id, name)
     .then(() => {
-      onReload();
       onCloseModal();
     })
   }

@@ -11,8 +11,9 @@ export const getEveryDeckIds = async() => {
 
 export const getEveryCardIdsInDeck = async(deckId:string) => {
   const allKeys = await AsyncStorage.getAllKeys();
+  console.log(allKeys)
   const cardIdArray = allKeys.filter((id) => 
-    id.split(':/')[0] === AsyncType.CARD && id.split(':/')[1] === deckId
+    id.split(':/')[0] === AsyncType.CARD && id.split('$$')[1] === deckId
   );
   return cardIdArray;
 }
@@ -20,7 +21,7 @@ export const getEveryCardIdsInDeck = async(deckId:string) => {
 // deck
 export const createDeck = async(name:string) => {
   const deck = {
-    id: generateKey(AsyncType.DECK, name),
+    id: generateKey(AsyncType.DECK),
     name,
   }
   return await saveAsyncStorage<Deck>(deck.id, deck);
@@ -43,12 +44,14 @@ export const deleteDeck = async(id:string) => {
 
 // card
 export const createCard = async(deckId:string, content:CardContent) => {
+  const cardId = generateKey(AsyncType.CARD, deckId);
   const card = {
     deckId,
-    id: generateKey(AsyncType.CARD, deckId),
+    id: cardId,
     content,
   }
-  return await saveAsyncStorage<Card>(card.id, card);
+  await saveAsyncStorage<Card>(card.id, card);
+  return cardId;
 }
 
 // export const readCard = async(cardId:string) => {

@@ -1,8 +1,6 @@
 import { AsyncType, Card } from '@src/type';
 import React, { useState } from 'react';
 import { Modal, View, TextInput, StyleSheet } from 'react-native';
-import { useRecoilState } from 'recoil';
-import newCardIDState from '@src/store/state/newCardIDState';
 import SquareBtn from '../atom/SquareBtn';
 import { createCard } from '@src/utils/deck';
 
@@ -10,17 +8,20 @@ const AddCardModal = ({
   deckId,
   modalVisible,
   onCloseModal,
+  onAddCardIdInArray,
 }:{
   deckId:string,
   modalVisible:boolean,
   onCloseModal: () => void,
+  onAddCardIdInArray: (cardId:string) => void,
 }) => {
   const [question, setQuestion] = useState<string>('');
   const [answer, setAnswer] = useState<string>('');
 
   const onPressConfirm = () => {
     if(question.length === 0 || answer.length === 0) return;
-    createCard(deckId,{question,answer});
+    createCard(deckId,{question,answer})
+    .then(cardId => onAddCardIdInArray(cardId))
     setQuestion('');
     setAnswer('');
     onCloseModal();

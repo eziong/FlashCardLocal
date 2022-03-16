@@ -9,11 +9,6 @@ const DeckCollection = () => {
   const [deckIds, setDeckIds] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const isFocused = useIsFocused();
-  const [reload, setReload] = useState<number>(0);
-
-  useEffect(() => {
-    onReload();
-  },[isFocused])
 
   useEffect(() => {
     setIsLoading(true);
@@ -24,17 +19,11 @@ const DeckCollection = () => {
       a.split(':/')[1] > b.split(':/')[1] ? 1 : 0
     )))
     .finally(() => setIsLoading(false))
-  },[reload])
-
-  const onReload = () => {
-    setReload(prev => prev + 1);
-  }
+  },[isFocused])
   
-  const DeckItemPreviewArray = useMemo(() => {
-    return deckIds.map(deckId => (
-      <DeckItemPreview deckId={deckId} onReload={onReload} />
-    ))
-  },[deckIds.length])
+  const DeckItemPreviewArray = deckIds.map(deckId => (
+    <DeckItemPreview deckId={deckId} />
+  ))
 
   if(isLoading){
     return (

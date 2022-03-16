@@ -16,14 +16,14 @@ const DeckCreateContent = () => {
       setDisabled(true);
       createDeck(deckName)
       .then(() => setDisabled(false))
-      .finally(() => navigation.pop())
+      .finally(() => navigation.goBack())
     }
   }
 
   const onPressCancle = () => {
     if(disabled) return;
     setDeckName('');
-    navigation.pop();
+    navigation.goBack();
   }
 
   return (

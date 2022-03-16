@@ -1,3 +1,4 @@
+import { getEveryCardIdsInDeck } from '@src/utils/deck';
 import React, { Fragment, useState } from 'react';
 import { Modal, StyleSheet, Text, View } from 'react-native';
 import SquareBtn from '../atom/SquareBtn';
@@ -5,8 +6,10 @@ import AddCardModal from './AddCardModal';
 
 const AddCardBtn = ({
   deckId,
+  setCardIds,
 }:{
-  deckId:string
+  deckId:string,
+  setCardIds: React.Dispatch<React.SetStateAction<string[]>>,
 }) => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
 
@@ -16,6 +19,10 @@ const AddCardBtn = ({
 
   const onCloseModal = () => {
     setModalVisible(false);
+  }
+
+  const onAddCardIdInArray = (cardId:string) => {
+    setCardIds(prev => [...prev, cardId])
   }
 
   return(
@@ -29,6 +36,7 @@ const AddCardBtn = ({
         deckId={deckId}
         modalVisible={modalVisible}
         onCloseModal={onCloseModal}
+        onAddCardIdInArray={onAddCardIdInArray}
       />
     </Fragment>
   )

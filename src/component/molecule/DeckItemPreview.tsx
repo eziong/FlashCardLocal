@@ -1,4 +1,6 @@
+import DeckItemContext from '@src/context/DeckItemContext';
 import useLoadAsyncStorage from '@src/hook/useLoadAsyncStorage';
+import { Deck } from '@src/type';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import DeckEditBtn from './DeckEditBtn';
@@ -8,28 +10,42 @@ import DeckViewBtn from './DeckViewBtn';
 const DeckItemPreview = ({
   deckId,
   readOnly,
-  onReload,
 }:{
   deckId:string,
   readOnly?:boolean,
-  onReload: () => void,
 }) => {
-  const [deck, isLoading] = useLoadAsyncStorage(deckId);
-  
+  const [deck, isLoading] = useLoadAsyncStorage<Deck>(deckId);
+  const [name, setName] = useState<string>('');
 
-  if(isLoading){
+  useEffect(() => {
+    if(isLoading || !deck) return;
+    setName(deck.name)
+  },[isLoading])
+
+  if(isLoading || !deck){
     return(<EmptyDeckItemPreview />)
   }
   return (
-    <View style={styles.Container} >
-      <Text>{deck.name}</Text>
-      <View style={styles.ButtonsContainer} >
-        <DeckViewBtn deck={deck} />
-        {readOnly 
-        ? (<DeckSelectBtn deck={deck} />)
-        : (<DeckEditBtn deck={deck} onReload={onReload} />)}
+    <DeckItemContext.Provider
+      value={{id:deck.id, name, setName}}
+    >
+      <View style={styles.Container} >
+        <Text>{name}</Text>
+        {readOnly
+        ? (
+          <View style={styles.ButtonsContainer} >
+            <DeckViewBtn deck={deck} />
+            <DeckSelectBtn deck={deck} />
+          </View>
+        )
+        : (
+          <View style={styles.ButtonsContainer} >
+            <DeckEditBtn />
+          </View>
+        )
+        }
       </View>
-    </View>
+    </DeckItemContext.Provider>
   )
 }
 
