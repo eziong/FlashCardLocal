@@ -5,8 +5,11 @@ export enum TabBarFirstScreen {
 }
 
 export type ParamLimit = {
-  DeckEditContent: {
+  Learning: {
     deckId:string,
+  },
+  DeckView: {
+    deck: Deck,
   }
 }
 
@@ -18,6 +21,8 @@ export enum AsyncType {
 export interface Deck {
   id: string;
   name: string;
+  description: string;
+  theme?: string;
 }
 
 export interface Card {

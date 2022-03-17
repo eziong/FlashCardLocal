@@ -18,11 +18,16 @@ export const getEveryCardIdsInDeck = async(deckId:string) => {
   return cardIdArray;
 }
 
+// export const getDeckTheme = async() => {
+  
+// }
+
 // deck
-export const createDeck = async(name:string) => {
+export const createDeck = async(name:string, description:string) => {
   const deck = {
     id: generateKey(AsyncType.DECK),
     name,
+    description,
   }
   return await saveAsyncStorage<Deck>(deck.id, deck);
 }
@@ -31,9 +36,9 @@ export const createDeck = async(name:string) => {
 //   return await loadAsyncStorage<Deck>(id);
 // }
 
-export const updateDeck = async(id:string, name:string) => {
+export const updateDeck = async(id:string, name:string, description:string) => {
   const deck = {
-    id, name
+    id, name, description
   }
   return await saveAsyncStorage<Deck>(id,deck);
 }

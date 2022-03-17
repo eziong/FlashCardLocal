@@ -25,7 +25,6 @@ export default T_Basic;
 const styles = StyleSheet.create({
   Container:{
     width: fullScreen()[1],
-    backgroundColor:'yellow'
   },
   Header:{
 

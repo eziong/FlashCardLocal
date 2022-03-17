@@ -1,16 +1,17 @@
-import { useRoute } from '@react-navigation/native';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import DeckViewContent from '@src/component/organism/DeckViewContent';
 import T_Basic from '@src/component/template/T_Basic';
+import { ParamLimit } from '@src/type';
 import React from 'react';
-import { View, Text } from 'react-native';
 
 const DeckViewScreen = () => {
-  const {params:deck} = useRoute();
-  
-  console.log(deck)
+  const {params:{deck}} = useRoute<RouteProp<ParamLimit,"DeckView">>();
 
   return (
     <T_Basic 
-      Body={<View><Text>Deck View Screen</Text></View>}
+      Body={
+        <DeckViewContent deck={deck} />
+      }
     />
   )
 }

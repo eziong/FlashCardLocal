@@ -1,23 +1,21 @@
-import { RouteProp, useRoute } from '@react-navigation/native';
 import DeckItemContext from '@src/context/DeckItemContext';
-import useLoadAsyncStorage from '@src/hook/useLoadAsyncStorage';
-import useTypeStackNavigation from '@src/hook/useTypeStackNavigation';
 import { fullScreen } from '@src/navigation/constant';
-import { AsyncType, Card, Deck, ParamLimit, TabBarFirstScreen } from '@src/type';
 import { getEveryCardIdsInDeck, updateDeck } from '@src/utils/deck';
 import React, { Fragment, useContext, useEffect, useMemo, useState } from 'react';
 import { Modal, View, TextInput, StyleSheet, FlatList } from 'react-native';
 import SquareBtn from '../atom/SquareBtn';
 import AddCardBtn from '../molecule/AddCardBtn';
 import CardItemPreview from '../molecule/CardItemPreview';
+import DeckInputBox from '../molecule/DeckInputBox';
 
 const DeckEditContent = ({
   onCloseModal,
 }:{
   onCloseModal: () => void
 }) => {
-  const {id, name, setName} = useContext(DeckItemContext);
+  const {id, name, setName, description, setDescription} = useContext(DeckItemContext);
   const [localName, setLocalName] = useState<string>(name);
+  const [localDescription, setLocalDescription] = useState<string>(description)
   const [cardIds, setCardIds] = useState<string[]>([]);
 
   useEffect(() => {
@@ -27,16 +25,22 @@ const DeckEditContent = ({
 
   const onPressConfirm = () => {
     if(name.length === 0) return;
-    updateDeck(id, localName)
+    updateDeck(id, localName, localDescription)
     .then(() => {
       setName(localName);
+      setDescription(localDescription);
       onCloseModal();
     })
   }
   
   return (
     <View style={styles.Container} >
-      <TextInput placeholder='Name' onChangeText={setLocalName} value={localName} />
+      <DeckInputBox 
+        deckName={localName}
+        setDeckName={setLocalName}
+        deckDescription={localDescription}
+        setDeckDescription={setLocalDescription}
+      />
       <FlatList
         data={cardIds ? cardIds : []}
         renderItem={({item, index}) => (

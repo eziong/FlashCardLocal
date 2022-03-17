@@ -16,10 +16,12 @@ const DeckItemPreview = ({
 }) => {
   const [deck, isLoading] = useLoadAsyncStorage<Deck>(deckId);
   const [name, setName] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
 
   useEffect(() => {
     if(isLoading || !deck) return;
-    setName(deck.name)
+    setName(deck.name);
+    setDescription(deck.description);
   },[isLoading])
 
   if(isLoading || !deck){
@@ -27,7 +29,7 @@ const DeckItemPreview = ({
   }
   return (
     <DeckItemContext.Provider
-      value={{id:deck.id, name, setName}}
+      value={{id:deck.id, name, setName, description, setDescription}}
     >
       <View style={styles.Container} >
         <Text>{name}</Text>
@@ -35,7 +37,7 @@ const DeckItemPreview = ({
         ? (
           <View style={styles.ButtonsContainer} >
             <DeckViewBtn deck={deck} />
-            <DeckSelectBtn deck={deck} />
+            <DeckSelectBtn deckId={deck.id} />
           </View>
         )
         : (
@@ -64,10 +66,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: "100%",
     height: 60,
-    backgroundColor: 'red',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 10,
+    borderWidth:1,
   },
   ButtonsContainer: {
     width:110,

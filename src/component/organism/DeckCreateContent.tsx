@@ -2,11 +2,12 @@ import useTypeStackNavigation from '@src/hook/useTypeStackNavigation';
 import { createDeck } from '@src/utils/deck';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
 import SquareBtn from '../atom/SquareBtn';
+import DeckInputBox from '../molecule/DeckInputBox';
 
 const DeckCreateContent = () => {
   const [deckName, setDeckName] = useState<string>('');
+  const [deckDescription, setDeckDescription] = useState<string>('');
   const [disabled, setDisabled] = useState<boolean>(false);
   const navigation = useTypeStackNavigation();
 
@@ -14,7 +15,7 @@ const DeckCreateContent = () => {
     if(disabled) return;
     if(deckName.length > 0){
       setDisabled(true);
-      createDeck(deckName)
+      createDeck(deckName, deckDescription)
       .then(() => setDisabled(false))
       .finally(() => navigation.goBack())
     }
@@ -28,18 +29,25 @@ const DeckCreateContent = () => {
 
   return (
     <View style={styles.Container} >
-      <TextInput placeholder='name' onChangeText={setDeckName} />
-      <View style={styles.DoubleBtnContainer} >
-        <SquareBtn 
-          content='Save' 
-          ContainerStyle={styles.BtnContainer}
-          onPress={onPressSave}
-        />
-        <SquareBtn 
-          content='Cancle' 
-          ContainerStyle={styles.BtnContainer}
-          onPress={onPressCancle}
-        />
+      <DeckInputBox 
+        deckName={deckName}
+        setDeckName={setDeckName}
+        deckDescription={deckDescription}
+        setDeckDescription={setDeckDescription}
+      />
+      <View style={styles.ContentContainer}>
+        <View style={styles.DoubleBtnContainer} >
+          <SquareBtn 
+            content='Save' 
+            ContainerStyle={styles.BtnContainer}
+            onPress={onPressSave}
+          />
+          <SquareBtn 
+            content='Cancle' 
+            ContainerStyle={styles.BtnContainer}
+            onPress={onPressCancle}
+          />
+        </View>
       </View>
     </View>
   )
@@ -50,6 +58,9 @@ export default DeckCreateContent;
 const styles = StyleSheet.create({
   Container: {
     flexDirection: 'column'
+  },
+  ContentContainer: {
+    padding:5
   },
   DoubleBtnContainer: {
     flexDirection: 'row',
