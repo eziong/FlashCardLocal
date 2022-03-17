@@ -4,6 +4,7 @@ import { Card } from '@src/type';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import CardEditBtn from './CardEditBtn';
+import CardViewBtn from './CardViewBtn';
 
 const CardItemPreview = ({
   cardId,
@@ -42,7 +43,7 @@ const CardItemPreview = ({
       <View style={styles.Container} >
         <Text>{question}</Text>
         <View style={styles.ButtonsContainer}>
-          <Text>view</Text>
+          <CardViewBtn />
           <CardEditBtn/>
         </View>
       </View>

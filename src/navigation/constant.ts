@@ -8,20 +8,20 @@ export enum StackNavigationName {
 
 export const bottomTabHeight = 100;
 
-export const fullScreen = () => {
+export const fullScreen = (ratio:number = 1) => {
   switch(Platform.OS){
     case "ios": {
       const {height, width} = Dimensions.get('window');
-      return [height, width];
+      return [height * ratio, width * ratio];
     }
     case "android": {
       const {height, width} = Dimensions.get('window');
       const statusBarHeight = StatusBar?.currentHeight || 24;
-      return [height-statusBarHeight, width];
+      return [(height-statusBarHeight) * ratio, width * ratio];
     }
     default:{
       const {height, width} = Dimensions.get('window');
-      return [height, width];
+      return [height * ratio, width * ratio];
     }
   }
 

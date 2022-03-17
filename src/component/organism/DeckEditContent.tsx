@@ -67,8 +67,8 @@ export default DeckEditContent;
 
 const styles =StyleSheet.create({
   Container: {
-    width: 300,
-    height: fullScreen()[0]-100,
+    width: fullScreen(0.85)[1],
+    height: fullScreen(0.85)[0],
     backgroundColor: 'white'
   },
   ModalBtnContainer: {
