@@ -1,5 +1,5 @@
 import { useIsFocused } from '@react-navigation/native';
-import { getEveryDeckIds } from '@src/utils/deck';
+import { getEverySortedDeckIds } from '@src/utils/deck';
 import React, { useEffect, useMemo, useState } from 'react';
 import DeckItemPreview from '../molecule/DeckItemPreview';
 import T_DeckView from '../template/T_DeckView';
@@ -11,12 +11,8 @@ const DeckSelection = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    getEveryDeckIds()
-    .then((deckIdArray) => setDeckIds(
-      deckIdArray
-      .sort((a,b) => 
-      a.split(':/')[1] > b.split(':/')[1] ? 1 : 0
-    )))
+    getEverySortedDeckIds()
+    .then((deckIdArray) => setDeckIds(deckIdArray))
     .finally(() => setIsLoading(false))
   },[isFocused])
   

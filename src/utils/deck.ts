@@ -9,6 +9,18 @@ export const getEveryDeckIds = async() => {
   return deckIdArray;
 }
 
+export const getEverySortedDeckIds = async() => {
+  const allKeys = await AsyncStorage.getAllKeys();
+  const deckIdArray = allKeys.filter((id) => id.split(':/')[0] === AsyncType.DECK);
+  const deckArray = await Promise.all(deckIdArray.map((deckId) => loadAsyncStorage<Deck>(deckId)));
+  const sortedDeckIdArray = deckArray.sort((a,b) => {
+    if(a[1] && b[1]) return a[1].name > b[1].name ? 1 : -1;
+    return 1;
+  }).map(deck => deck[1]?.id).filter((deckId):deckId is string => typeof deckId === "string");
+
+  return sortedDeckIdArray;
+}
+
 export const getEveryCardIdsInDeck = async(deckId:string) => {
   const allKeys = await AsyncStorage.getAllKeys();
   console.log(allKeys)
