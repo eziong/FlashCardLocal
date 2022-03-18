@@ -10,7 +10,6 @@ const CardSwiper = ({
 }:{
   cardIds:string[]
 }) => {
-  console.log(cardIds)
   return (
     <SwiperFlatList
       data={cardIds}

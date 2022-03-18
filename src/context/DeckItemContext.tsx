@@ -6,6 +6,7 @@ interface DeckItemContextValueInterface {
   setName: React.Dispatch<React.SetStateAction<string>>;
   description: string;
   setDescription: React.Dispatch<React.SetStateAction<string>>;
+  setDeckIds: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 const DeckItemContext = createContext<DeckItemContextValueInterface>({
@@ -14,6 +15,7 @@ const DeckItemContext = createContext<DeckItemContextValueInterface>({
   setName: () => null,
   description: '',
   setDescription: () => null,
+  setDeckIds: () => null,
 });
 
 export default DeckItemContext;

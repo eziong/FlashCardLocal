@@ -3,6 +3,7 @@ import useLoadAsyncStorage from '@src/hook/useLoadAsyncStorage';
 import { Deck } from '@src/type';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import DeckDeleteBtn from './DeckDeleteBtn';
 import DeckEditBtn from './DeckEditBtn';
 import DeckSelectBtn from './DeckSelectBtn';
 import DeckViewBtn from './DeckViewBtn';
@@ -10,9 +11,11 @@ import DeckViewBtn from './DeckViewBtn';
 const DeckItemPreview = ({
   deckId,
   readOnly,
+  setDeckIds,
 }:{
   deckId:string,
   readOnly?:boolean,
+  setDeckIds: React.Dispatch<React.SetStateAction<string[]>>
 }) => {
   const [deck, isLoading] = useLoadAsyncStorage<Deck>(deckId);
   const [name, setName] = useState<string>('');
@@ -29,7 +32,7 @@ const DeckItemPreview = ({
   }
   return (
     <DeckItemContext.Provider
-      value={{id:deck.id, name, setName, description, setDescription}}
+      value={{id:deck.id, name, setName, description, setDescription, setDeckIds}}
     >
       <View style={styles.Container} >
         <Text>{name}</Text>
@@ -43,6 +46,7 @@ const DeckItemPreview = ({
         : (
           <View style={styles.ButtonsContainer} >
             <DeckEditBtn />
+            <DeckDeleteBtn />
           </View>
         )
         }

@@ -17,7 +17,7 @@ const DeckCollection = () => {
   },[isFocused])
   
   const DeckItemPreviewArray = deckIds.map(deckId => (
-    <DeckItemPreview deckId={deckId} />
+    <DeckItemPreview deckId={deckId} setDeckIds={setDeckIds} />
   ))
 
   if(isLoading){
