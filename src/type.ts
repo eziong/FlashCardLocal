@@ -4,6 +4,12 @@ export enum TabBarFirstScreen {
   SettingsMainScreen = "SettingsMainScreen",
 }
 
+export enum BottomTabName {
+  HomeStack = "HomeStack",
+  DeckStack = "DeckStack",
+  SettingsStack = "SettingsStack",
+}
+
 export type ParamLimit = {
   Learning: {
     deckId:string,

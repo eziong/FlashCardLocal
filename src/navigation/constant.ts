@@ -6,7 +6,7 @@ export enum StackNavigationName {
   SettingsStack = "SettingsStackNavigation",
 }
 
-export const bottomTabHeight = 100;
+export const bottomTabHeight = 70;
 
 export const fullScreen = (ratio:number = 1) => {
   switch(Platform.OS){

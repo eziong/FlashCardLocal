@@ -10,8 +10,16 @@ const useBottomTabVisible = () => {
   useEffect(() => {
     if(tabNavigation){
       if(focused) tabNavigation.setOptions({
-        tabBarStyle:{display:'flex', height: bottomTabHeight}, 
-        style:{height: bottomTabHeight}
+        tabBarStyle:{
+          display:'flex',
+          height: bottomTabHeight,
+          position: 'absolute', 
+          bottom: 15,
+          left: 10,
+          right: 10,
+          borderRadius: 25,
+          // elevation: 0,
+        },
       });
       else tabNavigation.setOptions({tabBarStyle:{display:'none'}});
     }
