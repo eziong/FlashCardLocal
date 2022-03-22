@@ -29,12 +29,13 @@ export default T_DeckManage;
 
 const styles = StyleSheet.create({
   Container:{
-    
+    width:"100%",
+    height: "100%",
   },
   FlatlistContainer: {
     flex:1
   },
   ButtonContainer: {
-    width: fullScreen()[1],
+    width: "100%",
   }
 })
