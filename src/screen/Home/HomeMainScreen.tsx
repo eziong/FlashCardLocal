@@ -4,6 +4,7 @@ import useBottomTabVisible from '@src/hook/useBottomTabVisible';
 import useTypeStackNavigation from '@src/hook/useTypeStackNavigation';
 import { bottomTabHeight } from '@src/navigation/constant';
 import React from 'react';
+import { StyleSheet } from 'react-native';
 
 const HomeMainScreen = () => {
   useBottomTabVisible();
@@ -15,6 +16,8 @@ const HomeMainScreen = () => {
         <CircleBtn 
           content='Learn'
           onPress={() => navigation.navigate('DeckSelectionScreen')}
+          ContainerStyle={styles.ContainerStyle}
+          ContentStyle={styles.ContentStyle}
         />
       }
       bottomTabBarHeight={bottomTabHeight}
@@ -23,3 +26,12 @@ const HomeMainScreen = () => {
 }
 
 export default HomeMainScreen;
+
+const styles = StyleSheet.create({
+  ContainerStyle: {
+    backgroundColor: 'skyblue'
+  },
+  ContentStyle: {
+    color: 'black'
+  }
+})

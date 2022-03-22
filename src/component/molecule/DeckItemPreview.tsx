@@ -68,12 +68,10 @@ const EmptyDeckItemPreview = () => {
 const styles = StyleSheet.create({
   Container:{
     flexDirection: 'row',
-    width: "100%",
+    width: "98%",
     height: 60,
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 10,
-    borderWidth:1,
   },
   ButtonsContainer: {
     width:110,

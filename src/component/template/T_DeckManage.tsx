@@ -1,7 +1,7 @@
-import { fullScreen } from '@src/navigation/constant';
+import { bottomTabHeight, fullScreen } from '@src/navigation/constant';
 import React, { Fragment, ReactElement } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
-import CreateDeckBtn from '../molecule/CreateDeckBtn';
+import HidingBtn from '../molecule/HidingBtn';
 
 const T_DeckManage = ({
   elements
@@ -13,14 +13,22 @@ const T_DeckManage = ({
       <FlatList
         data={elements}
         renderItem={({item, index}) => (
-          <Fragment key={index} >
+          <View key={index} style={
+            index%2===0
+            ?[styles.ItemContainer, {backgroundColor:'yellow'}]
+            :[styles.ItemContainer, {backgroundColor: 'skyblue'}]
+          } >
             {item}
-          </Fragment>
+          </View>
         )}
+        ListFooterComponent={
+          <View style={[styles.ItemContainer, {height:50}]} ></View>
+        }
       />
     </View>
     <View style={styles.ButtonContainer}>
-      <CreateDeckBtn />
+      {/* <CreateDeckBtn /> */}
+      <HidingBtn size={40} color="black" />
     </View>
   </View>
 )
@@ -33,9 +41,16 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   FlatlistContainer: {
-    flex:1
+    flex:1,
+  },
+  ItemContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius:10,
   },
   ButtonContainer: {
-    width: "100%",
+    position:'absolute',
+    bottom: bottomTabHeight - 5,
+    left: 5,
   }
 })
