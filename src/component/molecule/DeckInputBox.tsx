@@ -44,10 +44,12 @@ const styles = StyleSheet.create({
     padding:5
   },
   NameInput:{
-    ...GeneralStyle.InputStyle
+    ...GeneralStyle.InputStyle,
+    width: 250,
   },
   DescriptionInput: {
     ...GeneralStyle.InputStyle,
     textAlignVertical: 'top',
+    width: 250,
   }
 })

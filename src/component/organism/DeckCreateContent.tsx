@@ -1,7 +1,7 @@
 import useTypeStackNavigation from '@src/hook/useTypeStackNavigation';
 import { createDeck } from '@src/utils/deck';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native';
 import SquareBtn from '../atom/SquareBtn';
 import DeckInputBox from '../molecule/DeckInputBox';
 
@@ -28,14 +28,21 @@ const DeckCreateContent = () => {
   }
 
   return (
+    <KeyboardAvoidingView
+      style={{flex:1}}
+      behavior="padding"
+    >
     <View style={styles.Container} >
-      <DeckInputBox 
-        deckName={deckName}
-        setDeckName={setDeckName}
-        deckDescription={deckDescription}
-        setDeckDescription={setDeckDescription}
-      />
-      <View style={styles.ContentContainer}>
+      <View style={styles.HeaderContainer} >
+        <Text style={styles.HeaderText} >Write new deck information</Text>
+      </View>
+      <View style={styles.BodyContainer} >
+        <DeckInputBox 
+          deckName={deckName}
+          setDeckName={setDeckName}
+          deckDescription={deckDescription}
+          setDeckDescription={setDeckDescription}
+        />
         <View style={styles.DoubleBtnContainer} >
           <SquareBtn 
             content='Save' 
@@ -50,26 +57,45 @@ const DeckCreateContent = () => {
         </View>
       </View>
     </View>
+    </KeyboardAvoidingView>
   )
 }
 
 export default DeckCreateContent;
 
 const styles = StyleSheet.create({
+  HeaderContainer: {
+    justifyContent:'flex-end',
+    alignItems:'center',
+    marginBottom:50,
+  },
+  BodyContainer: {
+    flexDirection: 'column',
+    justifyContent:'center',
+    alignItems: 'center',
+  },
   Container: {
-    flexDirection: 'column'
+    flex:1,
+    flexDirection: 'column',
+    justifyContent:'center',
+    alignItems: 'center',
   },
   ContentContainer: {
     padding:5
   },
   DoubleBtnContainer: {
+    width:220,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignItems: 'center',
     paddingVertical: 25,
   },
   BtnContainer: {
     width: 85,
     height: 50
+  },
+  HeaderText: {
+    color: 'black',
+    fontSize: 30,
   }
 })
