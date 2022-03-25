@@ -1,41 +1,26 @@
+import DeckItemContext from '@src/context/DeckItemContext';
 import useTypeStackNavigation from '@src/hook/useTypeStackNavigation';
 import { fullScreen } from '@src/navigation/constant';
-import { Deck } from '@src/type';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import { Modal, StyleSheet, View } from 'react-native';
 import SquareBtn from '../atom/SquareBtn';
-import DeckEditContent from '../organism/DeckEditContent';
 
 const DeckEditBtn = () => {
-  const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const {id, name, description} = useContext(DeckItemContext);
 
-  const onOpenModal = () => {
-    setModalVisible(true);
-  }
+  const navigation = useTypeStackNavigation();
 
-  const onCloseModal = () => {
-    setModalVisible(false);
+  const onPress = () => {
+    navigation.navigate('DeckEditScreen',{id, name, description});
   }
 
   return (
     <Fragment>
       <SquareBtn 
-        content='edit'
         ContainerStyle={styles.Container}
-        ContentStyle={styles.ContentContainer}
-        onPress={onOpenModal}
+        ContentStyle={{name:'edit', size: 30, color: 'black'}}
+        onPress={onPress}
       />
-      <Modal
-        transparent={true}
-        onRequestClose={onCloseModal}
-        visible={modalVisible}
-      >
-        <View style={styles.ModalContainer} >
-          <DeckEditContent 
-            onCloseModal={onCloseModal}
-          />
-        </View>
-      </Modal>
     </Fragment>
   )
 }
@@ -45,7 +30,7 @@ export default DeckEditBtn;
 const styles = StyleSheet.create({
   Container: {
     width: 50,
-    height: 25,
+    height: 40,
   },
   ContentContainer: {
     fontSize : 15

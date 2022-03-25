@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, TextStyle, View, ViewStyle, TouchableWithoutFeedback } from 'react-native';
+import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const CircleBtn = ({
-  content,
   onPress,
   ContainerStyle,
   ContentStyle,
@@ -10,12 +10,12 @@ const CircleBtn = ({
   content?:string,
   onPress?:() => void,
   ContainerStyle?:ViewStyle,
-  ContentStyle?:TextStyle,
+  ContentStyle:{name:string, size:number, color:string},
 }) => {
   return (
     <TouchableWithoutFeedback onPress={onPress} >
       <View style={[styles.Container, ContainerStyle]} >
-        <Text style={[styles.Content, ContentStyle]} >{content}</Text>
+        <MaterialCommunityIcon name={ContentStyle.name} size={ContentStyle.size} color={ContentStyle.color} />
       </View>
     </TouchableWithoutFeedback>
   )
@@ -28,9 +28,10 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     borderRadius: 100,
-    borderWidth: 2,
+    borderWidth: 0.1,
     alignItems: 'center',
     justifyContent: 'center',
+    elevation:10,
   },
   Content: {
     fontSize: 20,

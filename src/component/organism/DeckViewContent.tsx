@@ -16,7 +16,7 @@ const DeckViewContent = ({
             Name
           </Text>
         </View>
-        <View style={styles.ContentTextContainer} >
+        <View style={styles.NameTextContainer} >
           <Text style={styles.ContentText} >
             {deck.name}
           </Text>
@@ -28,7 +28,7 @@ const DeckViewContent = ({
             Description
           </Text>
         </View>
-        <View style={styles.ContentTextContainer} >
+        <View style={styles.DescriptionTextContainer} >
           <Text style={styles.ContentText} >
             {deck.description}
           </Text>
@@ -44,7 +44,10 @@ const styles = StyleSheet.create({
   Container: {
     height: fullScreen()[0] * 0.8,
     width: fullScreen()[1] * 0.8,
-    borderWidth: 1,
+    borderRadius:10,
+    borderWidth: 20,
+    borderColor:'white',
+    padding: 10,
   },
   ContentContainer: {
     flexDirection: 'row',
@@ -56,8 +59,15 @@ const styles = StyleSheet.create({
   IndexText: {
     color: 'black'
   },
-  ContentTextContainer: {
-    flex: 1,
+  NameTextContainer: {
+    width: fullScreen()[1] * 0.35,
+    height: 50,
+    overflow: 'scroll',
+  },
+  DescriptionTextContainer: {
+    width: fullScreen()[1] * 0.35,
+    height: 130,
+    overflow: 'scroll',
   },
   ContentText: {
     color: 'grey'

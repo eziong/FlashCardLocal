@@ -1,4 +1,5 @@
 import useLoadAsyncStorage from '@src/hook/useLoadAsyncStorage';
+import { Deck } from '@src/type';
 import { getEveryCardIdsInDeck } from '@src/utils/deck';
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
@@ -9,6 +10,7 @@ const LearningContent = ({
 }:{
   deckId:string,
 }) => {
+  const [deck, isLoading] = useLoadAsyncStorage<Deck>(deckId);
   const [cardIds, setCardIds] = useState<string[]>([]);
 
   useEffect(() => {
@@ -16,10 +18,16 @@ const LearningContent = ({
     .then((cardIdArray) => setCardIds(cardIdArray))
   },[])
 
+  if(isLoading || !deck){
+    return (
+      <View>
+        <Text>Loading ...</Text>
+      </View>
+    )
+  }
+
   return(
-    <View>
-      <CardSwiper cardIds={cardIds} />
-    </View>
+    <CardSwiper cardIds={cardIds} deck={deck} />
   )
 }
 

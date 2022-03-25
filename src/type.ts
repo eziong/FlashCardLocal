@@ -16,6 +16,11 @@ export type ParamLimit = {
   },
   DeckView: {
     deck: Deck,
+  },
+  EditDeck: {
+    id: string,
+    name: string,
+    description: string,
   }
 }
 

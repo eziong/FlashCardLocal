@@ -16,9 +16,8 @@ const DeckSelectBtn = ({
 
   return (
     <SquareBtn 
-      content='select'
       ContainerStyle={styles.Container}
-      ContentStyle={styles.ContentContainer}
+      ContentStyle={{name:'check', size: 30, color: 'black'}}
       onPress={onPress}
     />
   )
@@ -29,7 +28,7 @@ export default DeckSelectBtn;
 const styles = StyleSheet.create({
   Container: {
     width: 50,
-    height: 25,
+    height: 40,
   },
   ContentContainer: {
     fontSize : 15

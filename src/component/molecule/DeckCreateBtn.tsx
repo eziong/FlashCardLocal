@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Animated, Pressable, StyleSheet, View } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
-const HidingBtn = ({
+const DeckCreateBtn = ({
   size,
   color,
 }:{
@@ -83,7 +83,7 @@ const HidingBtn = ({
   )
 }
 
-export default HidingBtn;
+export default DeckCreateBtn;
 
 const styles = StyleSheet.create({
   Container: {
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     left:10,
     top: 5,
     borderRadius: 50,
-    backgroundColor: 'red',
+    backgroundColor: 'rgba(255,196,196,1)',
     justifyContent:'center',
     alignItems:'center',
   }

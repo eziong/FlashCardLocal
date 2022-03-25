@@ -19,10 +19,9 @@ const CardViewBtn = () => {
   return(
     <Fragment>
       <SquareBtn 
-        content="View"
         onPress={onOpenModal}
         ContainerStyle={styles.Container}
-        ContentStyle={styles.Content}
+        ContentStyle={{name:'eye', size: 25, color: 'black'}}
       />
       <CardViewModal 
         modalVisible={modalVisible}

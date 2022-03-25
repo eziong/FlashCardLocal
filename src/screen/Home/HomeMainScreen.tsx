@@ -14,10 +14,9 @@ const HomeMainScreen = () => {
     <T_Basic 
       Body={
         <CircleBtn 
-          content='Learn'
           onPress={() => navigation.navigate('DeckSelectionScreen')}
           ContainerStyle={styles.ContainerStyle}
-          ContentStyle={styles.ContentStyle}
+          ContentStyle={{name:"cards-playing-outline", size:70, color:'black'}}
         />
       }
       bottomTabBarHeight={bottomTabHeight}
@@ -29,7 +28,7 @@ export default HomeMainScreen;
 
 const styles = StyleSheet.create({
   ContainerStyle: {
-    backgroundColor: 'skyblue'
+    backgroundColor: 'rgba(255,226,226,1)'
   },
   ContentStyle: {
     color: 'black'

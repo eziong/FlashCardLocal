@@ -13,7 +13,7 @@ export const HomeStackIcon = ({
   size: number
 }) => {
   if(focused){
-    return <MaterialIcon name='book-open-page-variant' size={size * 2} color="green" />
+    return <MaterialIcon name='book-open-page-variant' size={size * 2} color="rgba(72,196,72,1)" />
   }
   return <MaterialIcon name='book-open-page-variant' size={size * 1.5} color={color} />
 }
@@ -28,7 +28,7 @@ export const DeckStackIcon = ({
   size: number
 }) => {
   if(focused){
-    return <MaterialIcon name='bookshelf' size={size * 2} color="green" />
+    return <MaterialIcon name='bookshelf' size={size * 2} color="rgba(72,196,72,1)" />
   }
   return <MaterialIcon name='bookshelf' size={size * 1.5} color={color} />
 }
@@ -43,7 +43,7 @@ export const SettingsStackIcon = ({
   size: number
 }) => {
   if(focused){
-    return <FeatherIcon name='settings' size={size * 2} color="green" />
+    return <FeatherIcon name='settings' size={size * 2} color="rgba(72,196,72,1)" />
   }
   return <FeatherIcon name='settings' size={size * 1.5} color={color} />
 }
@@ -119,7 +119,7 @@ export const FloatingButton = ({
             borderRadius: 50,
             width: 70,
             height: 70,
-            backgroundColor: 'yellow',
+            backgroundColor: 'rgba(255,255,196,1)',
             justifyContent:'center',
             alignItems:'center',
             transform: [{

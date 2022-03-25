@@ -47,12 +47,12 @@ const CardEditModal = ({
             <TextInput placeholder='Answer' onChangeText={setLocalAnswer} value={localAnswer} />
             <View style={styles.ModalBtnContainer} >
               <SquareBtn 
-                content='Confirm' 
+                ContentStyle={{name:'check', size: 30, color: 'black'}}
                 ContainerStyle={styles.BtnContainer}
                 onPress={onPressConfirm}
               />
               <SquareBtn 
-                content='Cancle' 
+                ContentStyle={{name:'x', size: 30, color: 'black'}}
                 ContainerStyle={styles.BtnContainer}
                 onPress={onPressCancle}
               />

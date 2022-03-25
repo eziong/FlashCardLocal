@@ -20,9 +20,8 @@ const DeckDeleteBtn = () => {
   return (
     <Fragment>
       <SquareBtn 
-        content='delete'
         ContainerStyle={styles.Container}
-        ContentStyle={styles.ContentContainer}
+        ContentStyle={{name:'trash', size: 30, color: 'black'}}
         onPress={onOpenModal}
       />
       <Modal
@@ -45,7 +44,7 @@ export default DeckDeleteBtn;
 const styles = StyleSheet.create({
   Container: {
     width: 50,
-    height: 25,
+    height: 40,
   },
   ContentContainer: {
     fontSize : 15

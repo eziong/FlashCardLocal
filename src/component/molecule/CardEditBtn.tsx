@@ -18,10 +18,9 @@ const CardEditBtn = () => {
   return(
     <Fragment>
       <SquareBtn 
-        content="Edit"
         onPress={onOpenModal}
         ContainerStyle={styles.Container}
-        ContentStyle={styles.Content}
+        ContentStyle={{name:'edit', size: 25, color: 'black'}}
       />
       <CardEditModal 
         modalVisible={modalVisible}

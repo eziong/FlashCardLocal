@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native';
 import SquareBtn from '../atom/SquareBtn';
 import DeckInputBox from '../molecule/DeckInputBox';
+import HeaderText from '../molecule/HeaderText';
 
 const DeckCreateContent = () => {
   const [deckName, setDeckName] = useState<string>('');
@@ -33,9 +34,7 @@ const DeckCreateContent = () => {
       behavior="padding"
     >
     <View style={styles.Container} >
-      <View style={styles.HeaderContainer} >
-        <Text style={styles.HeaderText} >Write new deck information</Text>
-      </View>
+      <HeaderText text='Write deck infromation'/>
       <View style={styles.BodyContainer} >
         <DeckInputBox 
           deckName={deckName}
@@ -45,14 +44,14 @@ const DeckCreateContent = () => {
         />
         <View style={styles.DoubleBtnContainer} >
           <SquareBtn 
-            content='Save' 
-            ContainerStyle={styles.BtnContainer}
-            onPress={onPressSave}
-          />
-          <SquareBtn 
-            content='Cancle' 
+            ContentStyle={{name:'x', size: 30, color: 'black'}}
             ContainerStyle={styles.BtnContainer}
             onPress={onPressCancle}
+          />
+          <SquareBtn  
+            ContainerStyle={styles.BtnContainer}
+            ContentStyle={{name:'check', size: 30, color: 'black'}}
+            onPress={onPressSave}
           />
         </View>
       </View>
@@ -70,6 +69,7 @@ const styles = StyleSheet.create({
     marginBottom:50,
   },
   BodyContainer: {
+    flex:1,
     flexDirection: 'column',
     justifyContent:'center',
     alignItems: 'center',
@@ -77,7 +77,6 @@ const styles = StyleSheet.create({
   Container: {
     flex:1,
     flexDirection: 'column',
-    justifyContent:'center',
     alignItems: 'center',
   },
   ContentContainer: {

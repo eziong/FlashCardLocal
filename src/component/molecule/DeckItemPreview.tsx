@@ -1,8 +1,9 @@
 import DeckItemContext from '@src/context/DeckItemContext';
 import useLoadAsyncStorage from '@src/hook/useLoadAsyncStorage';
+import { fullScreen } from '@src/navigation/constant';
 import { Deck } from '@src/type';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import DeckDeleteBtn from './DeckDeleteBtn';
 import DeckEditBtn from './DeckEditBtn';
 import DeckSelectBtn from './DeckSelectBtn';
@@ -35,7 +36,9 @@ const DeckItemPreview = ({
       value={{id:deck.id, name, setName, description, setDescription, setDeckIds}}
     >
       <View style={styles.Container} >
-        <Text>{name}</Text>
+        <ScrollView style={styles.TextContainer} >
+          <Text style={styles.TextStyle} >{name}</Text>
+        </ScrollView>
         {readOnly
         ? (
           <View style={styles.ButtonsContainer} >
@@ -68,15 +71,24 @@ const EmptyDeckItemPreview = () => {
 const styles = StyleSheet.create({
   Container:{
     flexDirection: 'row',
-    width: "98%",
     height: 60,
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingHorizontal: 20,
   },
   ButtonsContainer: {
-    width:110,
+    width:120,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
+  },
+  TextStyle: {
+    fontSize: 18,
+    color: 'rgba(72,72,72,1)',
+  },
+  TextContainer: {
+    maxWidth: fullScreen(0.5)[1],
+    maxHeight: 30,
+    overflow: 'scroll',
   }
 })

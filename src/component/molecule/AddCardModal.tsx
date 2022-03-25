@@ -45,12 +45,12 @@ const AddCardModal = ({
             <TextInput placeholder='Answer' onChangeText={setAnswer} value={answer} />
             <View style={styles.ModalBtnContainer} >
               <SquareBtn 
-                content='Confirm' 
+                ContentStyle={{name:'check', size: 30, color: 'black'}}
                 ContainerStyle={styles.BtnContainer}
                 onPress={onPressConfirm}
               />
               <SquareBtn 
-                content='Cancle' 
+                ContentStyle={{name:'x', size: 30, color: 'black'}}
                 ContainerStyle={styles.BtnContainer}
                 onPress={onPressCancle}
               />

@@ -1,24 +1,54 @@
+import useTypeStackNavigation from '@src/hook/useTypeStackNavigation';
 import { fullScreen } from '@src/navigation/constant';
-import { Card } from '@src/type';
+import { Card, Deck, TabBarFirstScreen } from '@src/type';
 import React from 'react';
+import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {SwiperFlatList} from 'react-native-swiper-flatlist';
+import SquareBtn from '../atom/SquareBtn';
+import DeckViewContent from '../organism/DeckViewContent';
 import CardView from './CardView';
 
 const CardSwiper = ({
+  deck,
   cardIds
 }:{
+  deck:Deck,
   cardIds:string[]
 }) => {
+  const navigation = useTypeStackNavigation();
+
+  const onPressExit = () => {
+    navigation.navigate(TabBarFirstScreen.HomeMainScreen);
+  }
+
   return (
-    <SwiperFlatList
-      data={cardIds}
-      renderItem={({ item, index }) => (
-        <View key={index} style={styles.SwiperContainer} >
-          <CardView cardId={item}/>
-        </View>
-      )}
-    />
+    <View>
+      <SwiperFlatList
+        data={cardIds}
+        renderItem={({ item, index }) => (
+          <View key={index} style={styles.SwiperContainer} >
+            <CardView cardId={item}/>
+          </View>
+        )}
+        ListHeaderComponent={(
+          <View style={styles.SwiperContainer} >
+            <DeckViewContent deck={deck} />
+          </View>
+        )}
+        ListFooterComponent={(
+          <View style={styles.SwiperContainer} >
+            <Text>the end</Text>
+          </View>
+        )}
+      />
+      <View style={styles.ExitBtnContainer} >
+          <SquareBtn 
+            onPress={onPressExit}
+            ContentStyle={{name:'log-out', size:30, color:'black'}}
+          />
+      </View>
+    </View>
   )
 }
 
@@ -30,5 +60,15 @@ const styles = StyleSheet.create({
     width: fullScreen()[1],
     justifyContent:'center',
     alignItems:'center',
+    backgroundColor:'rgba(255,255,72,0.1)',
+  },
+  ExitBtnContainer: {
+    position: 'absolute',
+    width: 50,
+    height: 50,
+    top: 10,
+    right: 30,
+    borderRadius:10,
+    borderWidth: 3,
   }
 })

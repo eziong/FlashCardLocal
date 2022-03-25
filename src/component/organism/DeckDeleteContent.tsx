@@ -39,12 +39,12 @@ const DeckDeleteContent = ({
       <Text>Are you sure delete your deck?</Text>
       <View style={styles.ModalBtnContainer} >
         <SquareBtn 
-          content='Confirm' 
+          ContentStyle={{name:'check', size: 30, color: 'black'}}
           ContainerStyle={styles.BtnContainer}
           onPress={onPressConfirm}
         />
         <SquareBtn 
-          content='Cancle' 
+          ContentStyle={{name:'x', size: 30, color: 'black'}}
           ContainerStyle={styles.BtnContainer}
           onPress={onPressCancle}
         />
