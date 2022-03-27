@@ -1,6 +1,5 @@
 import React, { ReactElement, ReactNode, useEffect, useRef } from 'react';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import FeatherIcon from 'react-native-vector-icons/Feather';
 import { AccessibilityState, Animated, GestureResponderEvent, NativeSyntheticEvent, Pressable, StyleSheet, TargetedEvent, View } from 'react-native';
 
 export const HomeStackIcon = ({
@@ -33,7 +32,7 @@ export const DeckStackIcon = ({
   return <MaterialIcon name='bookshelf' size={size * 1.5} color={color} />
 }
 
-export const SettingsStackIcon = ({
+export const AccountStackIcon = ({
   focused,
   color,
   size,
@@ -43,9 +42,9 @@ export const SettingsStackIcon = ({
   size: number
 }) => {
   if(focused){
-    return <FeatherIcon name='settings' size={size * 2} color="rgba(72,196,72,1)" />
+    return <MaterialIcon name='account' size={size * 2} color="rgba(72,196,72,1)" />
   }
-  return <FeatherIcon name='settings' size={size * 1.5} color={color} />
+  return <MaterialIcon name='account' size={size * 1.5} color={color} />
 }
 
 export const FloatingButton = ({

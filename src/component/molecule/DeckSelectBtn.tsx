@@ -1,7 +1,7 @@
 import useTypeStackNavigation from '@src/hook/useTypeStackNavigation';
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import SquareBtn from '../atom/SquareBtn';
+import SquareBtnFeather from '../atom/SquareBtnFeather';
 
 const DeckSelectBtn = ({
   deckId,
@@ -15,7 +15,7 @@ const DeckSelectBtn = ({
   }
 
   return (
-    <SquareBtn 
+    <SquareBtnFeather 
       ContainerStyle={styles.Container}
       ContentStyle={{name:'check', size: 30, color: 'black'}}
       onPress={onPress}

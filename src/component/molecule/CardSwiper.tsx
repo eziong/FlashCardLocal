@@ -5,7 +5,7 @@ import React from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {SwiperFlatList} from 'react-native-swiper-flatlist';
-import SquareBtn from '../atom/SquareBtn';
+import SquareBtnFeather from '../atom/SquareBtnFeather';
 import DeckViewContent from '../organism/DeckViewContent';
 import CardView from './CardView';
 
@@ -43,7 +43,7 @@ const CardSwiper = ({
         )}
       />
       <View style={styles.ExitBtnContainer} >
-          <SquareBtn 
+          <SquareBtnFeather 
             onPress={onPressExit}
             ContentStyle={{name:'log-out', size:30, color:'black'}}
           />

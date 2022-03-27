@@ -8,15 +8,20 @@
  * @format
  */
 
+import { SettingContextProvider } from '@src/context/SettingContext';
 import Router from '@src/navigation/Router';
-import React from 'react';
-import { RecoilRoot } from 'recoil';
+import React, { useEffect } from 'react';
+import SplashScreen from 'react-native-splash-screen';
 
 const App = () => {
+
+  useEffect(() => {
+    SplashScreen.hide();
+  },[])
   return (
-    <RecoilRoot>
+    // <SettingContextProvider value={} >
       <Router />
-    </RecoilRoot>
+    // </SettingContextProvider>
   );
 };
 

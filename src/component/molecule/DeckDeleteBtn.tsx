@@ -3,7 +3,7 @@ import { fullScreen } from '@src/navigation/constant';
 import { Deck } from '@src/type';
 import React, { Fragment, useState } from 'react';
 import { Modal, StyleSheet, View } from 'react-native';
-import SquareBtn from '../atom/SquareBtn';
+import SquareBtnFeather from '../atom/SquareBtnFeather';
 import DeckDeleteContent from '../organism/DeckDeleteContent';
 
 const DeckDeleteBtn = () => {
@@ -19,7 +19,7 @@ const DeckDeleteBtn = () => {
 
   return (
     <Fragment>
-      <SquareBtn 
+      <SquareBtnFeather 
         ContainerStyle={styles.Container}
         ContentStyle={{name:'trash', size: 30, color: 'black'}}
         onPress={onOpenModal}

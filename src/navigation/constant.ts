@@ -3,7 +3,7 @@ import { Dimensions, Platform, StatusBar } from "react-native";
 export enum StackNavigationName {
   HomeStack = "HomeStackNavigation",
   DeckStack = "DeckStackNavigation",
-  SettingsStack = "SettingsStackNavigation",
+  AccountStack = "AccountStackNavigation",
 }
 
 export const bottomTabHeight = 70;

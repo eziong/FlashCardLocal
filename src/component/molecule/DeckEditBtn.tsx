@@ -3,7 +3,7 @@ import useTypeStackNavigation from '@src/hook/useTypeStackNavigation';
 import { fullScreen } from '@src/navigation/constant';
 import React, { Fragment, useContext, useState } from 'react';
 import { Modal, StyleSheet, View } from 'react-native';
-import SquareBtn from '../atom/SquareBtn';
+import SquareBtnFeather from '../atom/SquareBtnFeather';
 
 const DeckEditBtn = () => {
   const {id, name, description} = useContext(DeckItemContext);
@@ -16,7 +16,7 @@ const DeckEditBtn = () => {
 
   return (
     <Fragment>
-      <SquareBtn 
+      <SquareBtnFeather 
         ContainerStyle={styles.Container}
         ContentStyle={{name:'edit', size: 30, color: 'black'}}
         onPress={onPress}

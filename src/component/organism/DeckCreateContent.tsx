@@ -2,7 +2,7 @@ import useTypeStackNavigation from '@src/hook/useTypeStackNavigation';
 import { createDeck } from '@src/utils/deck';
 import React, { useState } from 'react';
 import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native';
-import SquareBtn from '../atom/SquareBtn';
+import SquareBtnFeather from '../atom/SquareBtnFeather';
 import DeckInputBox from '../molecule/DeckInputBox';
 import HeaderText from '../molecule/HeaderText';
 
@@ -43,12 +43,12 @@ const DeckCreateContent = () => {
           setDeckDescription={setDeckDescription}
         />
         <View style={styles.DoubleBtnContainer} >
-          <SquareBtn 
+          <SquareBtnFeather 
             ContentStyle={{name:'x', size: 30, color: 'black'}}
             ContainerStyle={styles.BtnContainer}
             onPress={onPressCancle}
           />
-          <SquareBtn  
+          <SquareBtnFeather  
             ContainerStyle={styles.BtnContainer}
             ContentStyle={{name:'check', size: 30, color: 'black'}}
             onPress={onPressSave}

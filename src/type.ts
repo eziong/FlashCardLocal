@@ -1,13 +1,13 @@
 export enum TabBarFirstScreen {
   HomeMainScreen = "HomeMainScreen",
   DeckMainScreen = "DeckMainScreen",
-  SettingsMainScreen = "SettingsMainScreen",
+  AccountMainScreen = "AccountMainScreen",
 }
 
 export enum BottomTabName {
   HomeStack = "HomeStack",
   DeckStack = "DeckStack",
-  SettingsStack = "SettingsStack",
+  AccountStack = "AccountStack",
 }
 
 export type ParamLimit = {

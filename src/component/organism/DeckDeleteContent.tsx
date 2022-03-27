@@ -3,7 +3,7 @@ import { deleteAsyncStorage } from '@src/utils/db';
 import { getEveryCardIdsInDeck,  } from '@src/utils/deck';
 import React, { Fragment, useContext, useEffect, useMemo, useState } from 'react';
 import {  View,  StyleSheet,  Text } from 'react-native';
-import SquareBtn from '../atom/SquareBtn';
+import SquareBtnFeather from '../atom/SquareBtnFeather';
 
 const DeckDeleteContent = ({
   onCloseModal,
@@ -38,12 +38,12 @@ const DeckDeleteContent = ({
     <View style={styles.Container} >
       <Text>Are you sure delete your deck?</Text>
       <View style={styles.ModalBtnContainer} >
-        <SquareBtn 
+        <SquareBtnFeather 
           ContentStyle={{name:'check', size: 30, color: 'black'}}
           ContainerStyle={styles.BtnContainer}
           onPress={onPressConfirm}
         />
-        <SquareBtn 
+        <SquareBtnFeather 
           ContentStyle={{name:'x', size: 30, color: 'black'}}
           ContainerStyle={styles.BtnContainer}
           onPress={onPressCancle}

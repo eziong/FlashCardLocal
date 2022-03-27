@@ -1,7 +1,7 @@
 import { AsyncType, Card } from '@src/type';
 import React, { useState } from 'react';
 import { Modal, View, TextInput, StyleSheet } from 'react-native';
-import SquareBtn from '../atom/SquareBtn';
+import SquareBtnFeather from '../atom/SquareBtnFeather';
 import { createCard } from '@src/utils/deck';
 
 const AddCardModal = ({
@@ -44,12 +44,12 @@ const AddCardModal = ({
             <TextInput placeholder='Question' onChangeText={setQuestion} value={question} />
             <TextInput placeholder='Answer' onChangeText={setAnswer} value={answer} />
             <View style={styles.ModalBtnContainer} >
-              <SquareBtn 
+              <SquareBtnFeather 
                 ContentStyle={{name:'check', size: 30, color: 'black'}}
                 ContainerStyle={styles.BtnContainer}
                 onPress={onPressConfirm}
               />
-              <SquareBtn 
+              <SquareBtnFeather 
                 ContentStyle={{name:'x', size: 30, color: 'black'}}
                 ContainerStyle={styles.BtnContainer}
                 onPress={onPressCancle}

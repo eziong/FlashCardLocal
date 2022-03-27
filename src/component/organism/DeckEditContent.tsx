@@ -4,7 +4,7 @@ import { getEveryCardIdsInDeck, updateDeck } from '@src/utils/deck';
 import React, { Fragment, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Modal, View, TextInput, StyleSheet, FlatList, Text } from 'react-native';
 import SwiperFlatList from 'react-native-swiper-flatlist';
-import SquareBtn from '../atom/SquareBtn';
+import SquareBtnFeather from '../atom/SquareBtnFeather';
 import AddCardBtn from '../molecule/AddCardBtn';
 import CardItemPreview from '../molecule/CardItemPreview';
 import DeckInputBox from '../molecule/DeckInputBox';
@@ -110,7 +110,7 @@ const DeckEditContent = ({
         )}
       />
       <View style={styles.FooterContainer} >
-        <SquareBtn 
+        <SquareBtnFeather 
           ContainerStyle={styles.BtnContainer}
           ContentStyle={{name:'save', size: 30, color: 'black'}}
           onPress={onPressConfirm}

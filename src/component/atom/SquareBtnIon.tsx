@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, TextStyle, View, ViewStyle, TouchableWithoutFeedback } from 'react-native';
-import FeatherIcon from 'react-native-vector-icons/Feather';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const SquareBtn = ({
+const SquareBtnIon = ({
   onPress,
   ContainerStyle,
   ContentStyle,
@@ -14,13 +14,13 @@ const SquareBtn = ({
   return (
     <TouchableWithoutFeedback onPress={onPress} >
       <View style={[styles.Container, ContainerStyle]} >
-        <FeatherIcon name={ContentStyle.name} size={ContentStyle.size} color={ContentStyle.color} />
+        <Ionicons name={ContentStyle.name} size={ContentStyle.size} color={ContentStyle.color} />
       </View>
     </TouchableWithoutFeedback>
   )
 }
 
-export default SquareBtn;
+export default SquareBtnIon;
 
 const styles = StyleSheet.create({
   Container: {

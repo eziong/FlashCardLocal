@@ -4,8 +4,8 @@ import React, { useEffect } from 'react';
 import { bottomTabHeight } from '../constant';
 import DeckStackNavigation from './DeckStackNavigation';
 import HomeStackNavigation from './HomeStackNavigation';
-import SettingsStackNavigation from './SettingsStackNavigation';
-import { HomeStackIcon, DeckStackIcon, SettingsStackIcon, FloatingButton } from './TabBarButtons';
+import AccountStackNavigation from './AccountStackNavigation';
+import { HomeStackIcon, DeckStackIcon, AccountStackIcon, FloatingButton } from './TabBarButtons';
 
 const Tab = createBottomTabNavigator();
 
@@ -46,11 +46,11 @@ const BottomTabNavigation = () => {
         }}
         />
       <Tab.Screen 
-        name={BottomTabName.SettingsStack} 
-        component={SettingsStackNavigation} 
+        name={BottomTabName.AccountStack} 
+        component={AccountStackNavigation} 
         options={{
           tabBarIcon: ({focused, color, size}) => (
-            <SettingsStackIcon focused={focused} color={color} size={size} />
+            <AccountStackIcon focused={focused} color={color} size={size} />
           ),
           tabBarButton: ({children, accessibilityState, onPress}:BottomTabBarButtonProps) => (
             <FloatingButton children={children} accessibilityState={accessibilityState} onPress={onPress} />

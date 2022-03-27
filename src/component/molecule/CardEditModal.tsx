@@ -3,7 +3,7 @@ import { AsyncType, Card } from '@src/type';
 import { updateCard } from '@src/utils/deck';
 import React, { useContext, useEffect, useState } from 'react';
 import { Modal, View, TextInput, StyleSheet } from 'react-native';
-import SquareBtn from '../atom/SquareBtn';
+import SquareBtnFeather from '../atom/SquareBtnFeather';
 
 const CardEditModal = ({
   modalVisible,
@@ -46,12 +46,12 @@ const CardEditModal = ({
             <TextInput placeholder='Question' onChangeText={setLocalQuestion} value={localQuestion} />
             <TextInput placeholder='Answer' onChangeText={setLocalAnswer} value={localAnswer} />
             <View style={styles.ModalBtnContainer} >
-              <SquareBtn 
+              <SquareBtnFeather 
                 ContentStyle={{name:'check', size: 30, color: 'black'}}
                 ContainerStyle={styles.BtnContainer}
                 onPress={onPressConfirm}
               />
-              <SquareBtn 
+              <SquareBtnFeather 
                 ContentStyle={{name:'x', size: 30, color: 'black'}}
                 ContainerStyle={styles.BtnContainer}
                 onPress={onPressCancle}

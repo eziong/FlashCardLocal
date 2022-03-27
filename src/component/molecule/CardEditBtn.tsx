@@ -1,7 +1,7 @@
 import { Card } from '@src/type';
 import React, { Fragment, useState } from 'react';
 import { Modal, StyleSheet, Text, View } from 'react-native';
-import SquareBtn from '../atom/SquareBtn';
+import SquareBtnFeather from '../atom/SquareBtnFeather';
 import CardEditModal from './CardEditModal';
 
 const CardEditBtn = () => {
@@ -17,7 +17,7 @@ const CardEditBtn = () => {
 
   return(
     <Fragment>
-      <SquareBtn 
+      <SquareBtnFeather 
         onPress={onOpenModal}
         ContainerStyle={styles.Container}
         ContentStyle={{name:'edit', size: 25, color: 'black'}}

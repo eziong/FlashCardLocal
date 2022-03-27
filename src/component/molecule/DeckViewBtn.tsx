@@ -2,7 +2,7 @@ import useTypeStackNavigation from '@src/hook/useTypeStackNavigation';
 import { Deck } from '@src/type';
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import SquareBtn from '../atom/SquareBtn';
+import SquareBtnFeather from '../atom/SquareBtnFeather';
 
 const DeckViewBtn = ({
   deck,
@@ -16,7 +16,7 @@ const DeckViewBtn = ({
   }
 
   return (
-    <SquareBtn 
+    <SquareBtnFeather 
       ContainerStyle={styles.Container}
       ContentStyle={{name:'eye', size: 30, color: 'black'}}
       onPress={onPress}
