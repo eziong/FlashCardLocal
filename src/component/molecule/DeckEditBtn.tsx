@@ -1,6 +1,7 @@
 import DeckItemContext from '@src/context/DeckItemContext';
 import useTypeStackNavigation from '@src/hook/useTypeStackNavigation';
 import { fullScreen } from '@src/navigation/constant';
+import { COLOR } from '@src/utils/styles';
 import React, { Fragment, useContext, useState } from 'react';
 import { Modal, StyleSheet, View } from 'react-native';
 import SquareBtnFeather from '../atom/SquareBtnFeather';
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
   ModalContainer: {
     height: fullScreen()[0],
     width: fullScreen()[1],
-    backgroundColor: 'rgba(80,80,80,0.5)',
+    backgroundColor: COLOR.MODAL_BACKGROUND,
     justifyContent: 'center',
     alignItems: 'center',
   }

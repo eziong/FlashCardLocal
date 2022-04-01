@@ -1,6 +1,7 @@
 import React, { ReactElement, ReactNode, useEffect, useRef } from 'react';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { AccessibilityState, Animated, GestureResponderEvent, NativeSyntheticEvent, Pressable, StyleSheet, TargetedEvent, View } from 'react-native';
+import { useSettingsContext } from '@src/context/SettingContext';
 
 export const HomeStackIcon = ({
   focused,
@@ -11,8 +12,9 @@ export const HomeStackIcon = ({
   color: string,
   size: number
 }) => {
+  const {settings:{color:{TabBarIcon}}} = useSettingsContext();
   if(focused){
-    return <MaterialIcon name='book-open-page-variant' size={size * 2} color="rgba(72,196,72,1)" />
+    return <MaterialIcon name='book-open-page-variant' size={size * 2} color={TabBarIcon} />
   }
   return <MaterialIcon name='book-open-page-variant' size={size * 1.5} color={color} />
 }
@@ -26,8 +28,9 @@ export const DeckStackIcon = ({
   color: string,
   size: number
 }) => {
+  const {settings:{color:{TabBarIcon}}} = useSettingsContext();
   if(focused){
-    return <MaterialIcon name='bookshelf' size={size * 2} color="rgba(72,196,72,1)" />
+    return <MaterialIcon name='bookshelf' size={size * 2} color={TabBarIcon} />
   }
   return <MaterialIcon name='bookshelf' size={size * 1.5} color={color} />
 }
@@ -41,8 +44,9 @@ export const AccountStackIcon = ({
   color: string,
   size: number
 }) => {
+  const {settings:{color:{TabBarIcon}}} = useSettingsContext();
   if(focused){
-    return <MaterialIcon name='account' size={size * 2} color="rgba(72,196,72,1)" />
+    return <MaterialIcon name='account' size={size * 2} color={TabBarIcon} />
   }
   return <MaterialIcon name='account' size={size * 1.5} color={color} />
 }
@@ -56,6 +60,7 @@ export const FloatingButton = ({
   onPress?: (e: GestureResponderEvent) => void,
   accessibilityState?: AccessibilityState,
 }) => {
+  const {settings:{color:{TabBarIconBackground}}} = useSettingsContext();
   const buttonPositionAnimation = useRef(new Animated.Value(0)).current;
   const buttonBackgroundColorAnimation = useRef(new Animated.Value(0)).current;
 
@@ -118,7 +123,7 @@ export const FloatingButton = ({
             borderRadius: 50,
             width: 70,
             height: 70,
-            backgroundColor: 'rgba(255,255,196,1)',
+            backgroundColor: TabBarIconBackground,
             justifyContent:'center',
             alignItems:'center',
             transform: [{

@@ -1,4 +1,5 @@
 import { useIsFocused } from '@react-navigation/native';
+import { useSettingsContext } from '@src/context/SettingContext';
 import useTypeStackNavigation from '@src/hook/useTypeStackNavigation';
 import React, { useEffect, useRef, useState } from 'react';
 import { Animated, Pressable, StyleSheet, View } from 'react-native';
@@ -11,6 +12,7 @@ const DeckCreateBtn = ({
   size: number,
   color: string,
 }) => {
+  const {settings:{color:{FloatingAddBtn}}} = useSettingsContext();
   const isFocused = useIsFocused();
   const [isExtended, setIsExtended] = useState<boolean>(false);
   const animRef = useRef(new Animated.Value(0)).current;
@@ -69,12 +71,12 @@ const DeckCreateBtn = ({
 
   return (
     <View>
-      <Animated.View style={[styles.Container,{transform:[{translateY:positionInterpolate(1)}]}]} >
+      <Animated.View style={[styles.Container,{backgroundColor: FloatingAddBtn,transform:[{translateY:positionInterpolate(1)}]}]} >
         <Pressable onPress={onPressCreateDeck} >
           <FeatherIcon name='file-plus' size={size * 0.8} color={color} />
         </Pressable>
       </Animated.View>
-      <Animated.View style={[styles.Container,{transform:[{rotateZ:rotationInterpolate}]}]} >
+      <Animated.View style={[styles.Container,{backgroundColor: FloatingAddBtn,transform:[{rotateZ:rotationInterpolate}]}]} >
         <Pressable onPress={onPressExtend} >
           <FeatherIcon name='plus' size={size} color={color} />
         </Pressable>
@@ -93,7 +95,6 @@ const styles = StyleSheet.create({
     left:10,
     top: 5,
     borderRadius: 50,
-    backgroundColor: 'rgba(255,196,196,1)',
     justifyContent:'center',
     alignItems:'center',
   }

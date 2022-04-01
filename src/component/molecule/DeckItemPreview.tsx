@@ -2,6 +2,7 @@ import DeckItemContext from '@src/context/DeckItemContext';
 import useLoadAsyncStorage from '@src/hook/useLoadAsyncStorage';
 import { fullScreen } from '@src/navigation/constant';
 import { Deck } from '@src/type';
+import { COLOR } from '@src/utils/styles';
 import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import DeckDeleteBtn from './DeckDeleteBtn';
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
   },
   TextStyle: {
     fontSize: 18,
-    color: 'rgba(72,72,72,1)',
+    color: COLOR.TEXT_1,
   },
   TextContainer: {
     maxWidth: fullScreen(0.5)[1],

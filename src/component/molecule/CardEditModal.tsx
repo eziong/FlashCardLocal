@@ -1,4 +1,5 @@
 import CardItemContext from '@src/context/CardItemContext';
+import { useSettingsContext } from '@src/context/SettingContext';
 import { AsyncType, Card } from '@src/type';
 import { updateCard } from '@src/utils/deck';
 import React, { useContext, useEffect, useState } from 'react';
@@ -13,6 +14,7 @@ const CardEditModal = ({
   onCloseModal: () => void,
 }) => {
   const {question, setQuestion, answer, setAnswer, deckId, id} = useContext(CardItemContext);
+  const {settings:{color:{ModalBackground}}} = useSettingsContext();
   const [localQuestion, setLocalQuestion] = useState<string>(question);
   const [localAnswer, setLocalAnswer] = useState<string>(answer);
 
@@ -41,7 +43,7 @@ const CardEditModal = ({
         onRequestClose={onCloseModal}
         transparent={true}
       >
-        <View style={styles.ModalContainer} >
+        <View style={[styles.ModalContainer,{backgroundColor:ModalBackground}]} >
           <View style={styles.ModalContentContainer} >
             <TextInput placeholder='Question' onChangeText={setLocalQuestion} value={localQuestion} />
             <TextInput placeholder='Answer' onChangeText={setLocalAnswer} value={localAnswer} />
@@ -70,7 +72,6 @@ const styles =StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(128,128,128,0.5)'
   },
   ModalContentContainer: {
     width: 300,

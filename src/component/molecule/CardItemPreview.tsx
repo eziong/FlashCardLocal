@@ -1,7 +1,9 @@
 import CardItemContext from '@src/context/CardItemContext';
+import { useSettingsContext } from '@src/context/SettingContext';
 import useLoadAsyncStorage from '@src/hook/useLoadAsyncStorage';
 import { fullScreen } from '@src/navigation/constant';
 import { Card } from '@src/type';
+import { COLOR } from '@src/utils/styles';
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import CardEditBtn from './CardEditBtn';
@@ -14,6 +16,7 @@ const CardItemPreview = ({
   cardId:string,
   index:number,
 }) => {
+  const {settings:{color:{OddLine, EvenLine}}} = useSettingsContext();
   const [card, isLoading] = useLoadAsyncStorage<Card>(cardId);
   const [question, setQuestion] = useState<string>('')
   const [answer, setAnswer] = useState<string>('');
@@ -45,8 +48,8 @@ const CardItemPreview = ({
     >
       <View style={
         index%2 === 0
-        ? ([styles.Container, {backgroundColor:'rgba(255,255,196,0.4)'}])
-        : ([styles.Container, {backgroundColor:'rgba(196,255,196,0.4)'}])
+        ? ([styles.Container, {backgroundColor:EvenLine}])
+        : ([styles.Container, {backgroundColor:OddLine}])
       } >
         <ScrollView style={styles.TextContainer} >
           <Text  style={styles.TextStyle}>{question}</Text>
@@ -80,7 +83,7 @@ const styles = StyleSheet.create({
   },
   TextStyle: {
     fontSize: 18,
-    color: 'rgba(72,72,72,1)',
+    color: COLOR.TEXT_1,
   },
   TextContainer: {
     maxWidth: fullScreen(0.5)[1],

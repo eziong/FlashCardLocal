@@ -1,6 +1,7 @@
 import useTypeStackNavigation from '@src/hook/useTypeStackNavigation';
 import { fullScreen } from '@src/navigation/constant';
 import { Card, Deck, TabBarFirstScreen } from '@src/type';
+import { COLOR } from '@src/utils/styles';
 import React from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
     width: fullScreen()[1],
     justifyContent:'center',
     alignItems:'center',
-    backgroundColor:'rgba(255,255,72,0.1)',
+    backgroundColor:COLOR.SWIPER_BACKGROUND,
   },
   ExitBtnContainer: {
     position: 'absolute',

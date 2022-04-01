@@ -10,18 +10,14 @@
 
 import { SettingContextProvider } from '@src/context/SettingContext';
 import Router from '@src/navigation/Router';
-import React, { useEffect } from 'react';
-import SplashScreen from 'react-native-splash-screen';
+import React from 'react';
 
 const App = () => {
 
-  useEffect(() => {
-    SplashScreen.hide();
-  },[])
   return (
-    // <SettingContextProvider value={} >
+    <SettingContextProvider>
       <Router />
-    // </SettingContextProvider>
+    </SettingContextProvider>
   );
 };
 

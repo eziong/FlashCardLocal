@@ -1,3 +1,4 @@
+import { useSettingsContext } from '@src/context/SettingContext';
 import React from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
@@ -11,9 +12,9 @@ const CardCreateBtn = ({
   color: string,
   onOpenModal: () => void,
 }) => {
- 
+  const  {settings:{color:{FloatingAddBtn}}} = useSettingsContext();
   return (
-    <View style={styles.Container} >
+    <View style={[styles.Container, {backgroundColor:FloatingAddBtn}]} >
       <Pressable onPress={onOpenModal} >
         <View style={styles.ContentContainer} >
           <FeatherIcon name='plus' size={size} color={color} />
@@ -33,7 +34,6 @@ const styles = StyleSheet.create({
     left:30,
     bottom: 170,
     borderRadius: 50,
-    backgroundColor: 'rgba(255,196,196,1)',
     justifyContent:'center',
     alignItems:'center',
   },

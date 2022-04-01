@@ -7,15 +7,22 @@ const CircleBtn = ({
   ContainerStyle,
   ContentStyle,
 }:{
-  content?:string,
   onPress?:() => void,
   ContainerStyle?:ViewStyle,
-  ContentStyle:{name:string, size:number, color:string},
+  ContentStyle?:{name:string, size:number, color:string},
 }) => {
   return (
     <TouchableWithoutFeedback onPress={onPress} >
       <View style={[styles.Container, ContainerStyle]} >
-        <MaterialCommunityIcon name={ContentStyle.name} size={ContentStyle.size} color={ContentStyle.color} />
+        {
+          ContentStyle
+          ? (
+            <MaterialCommunityIcon name={ContentStyle.name} size={ContentStyle.size} color={ContentStyle.color} />
+          )
+          : (
+             null 
+          )
+        }  
       </View>
     </TouchableWithoutFeedback>
   )

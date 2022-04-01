@@ -1,5 +1,6 @@
 import CardItemContext from '@src/context/CardItemContext';
 import { fullScreen } from '@src/navigation/constant';
+import { COLOR } from '@src/utils/styles';
 import React, { useContext, useEffect, useState } from 'react';
 import { Modal, View, TextInput, StyleSheet } from 'react-native';
 import CardView from './CardView';
@@ -34,6 +35,6 @@ const styles =StyleSheet.create({
     height: fullScreen()[0],
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(128,128,128,0.5)'
+    backgroundColor: COLOR.MODAL_BACKGROUND,
   },
 })

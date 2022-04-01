@@ -1,8 +1,8 @@
-import { AsyncType, Card } from '@src/type';
 import React, { useState } from 'react';
 import { Modal, View, TextInput, StyleSheet } from 'react-native';
 import SquareBtnFeather from '../atom/SquareBtnFeather';
 import { createCard } from '@src/utils/deck';
+import { useSettingsContext } from '@src/context/SettingContext';
 
 const AddCardModal = ({
   deckId,
@@ -15,6 +15,7 @@ const AddCardModal = ({
   onCloseModal: () => void,
   onAddCardIdInArray: (cardId:string) => void,
 }) => {
+  const {settings:{color}} = useSettingsContext();
   const [question, setQuestion] = useState<string>('');
   const [answer, setAnswer] = useState<string>('');
 
@@ -39,7 +40,7 @@ const AddCardModal = ({
         onRequestClose={onCloseModal}
         transparent={true}
       >
-        <View style={styles.ModalContainer} >
+        <View style={[styles.ModalContainer, {backgroundColor:color.ModalBackground}]} >
           <View style={styles.ModalContentContainer} >
             <TextInput placeholder='Question' onChangeText={setQuestion} value={question} />
             <TextInput placeholder='Answer' onChangeText={setAnswer} value={answer} />
@@ -68,7 +69,6 @@ const styles =StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(128,128,128,0.5)'
   },
   ModalContentContainer: {
     width: 300,

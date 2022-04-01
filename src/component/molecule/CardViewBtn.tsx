@@ -1,4 +1,5 @@
 import { Card } from '@src/type';
+import { COLOR } from '@src/utils/styles';
 import React, { Fragment, useState } from 'react';
 import { Modal, StyleSheet, Text, View } from 'react-native';
 import SquareBtnFeather from '../atom/SquareBtnFeather';
@@ -45,7 +46,7 @@ const styles =StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(128,128,128,0.5)'
+    backgroundColor: COLOR.MODAL_BACKGROUND,
   },
   ModalContentContainer: {
     width: 300,

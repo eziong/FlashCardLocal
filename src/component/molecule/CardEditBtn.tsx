@@ -37,27 +37,4 @@ const styles =StyleSheet.create({
     width: 50,
     height: 30,
   },
-  Content:{
-    fontSize: 15,
-  },
-  ModalContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(128,128,128,0.5)'
-  },
-  ModalContentContainer: {
-    width: 300,
-    height: 200,
-    backgroundColor: 'white'
-  },
-  ModalBtnContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  },
-  BtnContainer: {
-    width: 100,
-    height: 50,
-  }
 })

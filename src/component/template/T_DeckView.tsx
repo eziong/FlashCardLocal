@@ -1,3 +1,4 @@
+import { useSettingsContext } from '@src/context/SettingContext';
 import { fullScreen } from '@src/navigation/constant';
 import React, { Fragment, ReactElement } from 'react';
 import { StyleSheet, View, FlatList, Text } from 'react-native';
@@ -7,27 +8,31 @@ const T_DeckView = ({
   elements
 }:{
   elements: ReactElement[]
-}) => (
-  <View style={styles.Container} >
-    <View style={styles.HeaderContainer} >
-      <HeaderText text='Select a deck to learn' />
+}) => {
+  const {settings:{color:{OddLine, EvenLine}}} = useSettingsContext();
+
+  return (
+    <View style={styles.Container} >
+      <View style={styles.HeaderContainer} >
+        <HeaderText text='Select a deck to learn' />
+      </View>
+      <View style={styles.BodyContainer} >
+        <FlatList 
+          data={elements}
+          renderItem={({item, index}) => (
+            <View key={index} style={
+              index%2===0
+              ?([styles.ItemContainer, {backgroundColor:EvenLine}])
+              :([styles.ItemContainer, {backgroundColor:OddLine}])
+            } >
+              {item}
+            </View>
+          )}
+        />
+      </View>
     </View>
-    <View style={styles.BodyContainer} >
-      <FlatList 
-        data={elements}
-        renderItem={({item, index}) => (
-          <View key={index} style={
-            index%2===0
-            ?([styles.ItemContainer, {backgroundColor:'rgba(255,255,196,0.4)'}])
-            :([styles.ItemContainer, {backgroundColor: 'rgba(196,255,196,0.4)'}])
-          } >
-            {item}
-          </View>
-        )}
-      />
-    </View>
-  </View>
-)
+  )
+}
 
 export default T_DeckView;
 

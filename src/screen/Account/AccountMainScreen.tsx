@@ -42,7 +42,7 @@ const AccountMainScreen = () => {
             />
             <SquareBtnIon 
               ContainerStyle={styles.ItemContainer}
-              ContentStyle={{name:'question', size: 40, color:'black'}}
+              ContentStyle={{name:'shapes-outline', size: 40, color:'black'}}
               onPress={onPressGettingReady}
             />
           </View>
